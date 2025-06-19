@@ -10,33 +10,46 @@
     <div class="styling-container">
       <header>
         <h1>World Clock</h1>
-        <p>
+        <p class="description">
           Welcome to the World Clock application. Here you can view the current
           time in various cities around the world.
         </p>
       </header>
       <main>
-        <div class="info-container">
+        <div class="time-zone-container">
           <select name="time-zones" id="time-zones">
-            <option value=""></option>
+            <option value="">Select a city</option>
             <option value="amsterdam">Amsterdam</option>
             <option value="naples">Naples</option>
             <option value="dubai">Dubai</option>
           </select>
         </div>
-        <div>
-          <div class="clock-container">
-            <div class="clock" id="amsterdam-clock">
-              <h2>Amsterdam</h2>
-              <p class="time">00:00:00</p>
+        <div class="clock-container">
+          <div class="clock-wrapper">
+            <!-- Scrolling marquee for selected city and date -->
+            <div class="marquee-container">
+              <div class="marquee-content">
+                <!-- This will be populated dynamically with JavaScript -->
+                <div class="city-date-combo">
+                  <h2 id="selected-city-1">Select a city</h2>
+                  <div class="date" id="selected-date">---</div>
+                </div>
+                <!-- Duplicate for seamless scrolling -->
+                <div class="city-date-combo">
+                  <h2 id="selected-city-2">Select a city</h2>
+                  <div class="date" id="selected-date-2">---</div>
+                </div>
+                <!-- Third copy for smooth continuous scroll -->
+                <div class="city-date-combo">
+                  <h2 id="selected-city-3">Select a city</h2>
+                  <div class="date" id="selected-date-3">---</div>
+                </div>
+              </div>
             </div>
-            <div class="clock" id="naples-clock">
-              <h2>Naples</h2>
-              <p class="time">00:00:00</p>
-            </div>
-            <div class="clock" id="dubai-clock">
-              <h2>Dubai</h2>
-              <p class="time">00:00:00</p>
+
+            <!-- Large floating time display -->
+            <div class="clock">
+              <div class="time" id="selected-time">--:--:--</div>
             </div>
           </div>
         </div>
