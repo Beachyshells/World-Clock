@@ -140,7 +140,7 @@ select {
     transform: translateY(-5px) scale(1.02);
   }
 }
-/* Remove old date styling since it's now part of marquee */
+
 footer {
   text-align: center;
   color: white;
@@ -151,4 +151,5 @@ a {
   box-shadow: inset 0 0 10px greenyellow;
   padding: 6px;
   font-size: 12px;
+  line-height: 2px;
 }
