@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>World-Clock</title>
+  </head>
+  <body>
+    <div class="styling-container">
+      <header>
+        <h1>World Clock</h1>
+        <p>
+          Welcome to the World Clock application. Here you can view the current
+          time in various cities around the world.
+        </p>
+      </header>
+      <main>
+        <div class="info-container">
+          <select name="time-zones" id="time-zones">
+            <option value=""></option>
+            <option value="amsterdam">Amsterdam</option>
+            <option value="naples">Naples</option>
+            <option value="dubai">Dubai</option>
+          </select>
+        </div>
+        <div>
+          <div class="clock-container">
+            <div class="clock" id="amsterdam-clock">
+              <h2>Amsterdam</h2>
+              <p class="time">00:00:00</p>
+            </div>
+            <div class="clock" id="naples-clock">
+              <h2>Naples</h2>
+              <p class="time">00:00:00</p>
+            </div>
+            <div class="clock" id="dubai-clock">
+              <h2>Dubai</h2>
+              <p class="time">00:00:00</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <footer>
+      This project was coded by <a href="">Michelle Durham</a> 🐞 and is open
+      sourced on <a href="">GitHub</a> and hosted on <a href="">Netlify</a>
+    </footer>
+  </body>
+</html>
