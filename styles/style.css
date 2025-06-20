@@ -194,3 +194,25 @@ a {
   text-decoration: none;
   border-radius: 3px;
 }
+
+.ladybug-glow {
+  text-shadow: 
+    0 0 3px #4da6ff,
+    0 0 6px #4da6ff;
+  filter: drop-shadow(0 0 4px #4da6ff);
+  animation: pulse-blue 3s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-blue {
+  from {
+    text-shadow: 
+      0 0 2px #4da6ff,
+      0 0 4px #4da6ff;
+  }
+  to {
+    text-shadow: 
+      0 0 4px #4da6ff,
+      0 0 8px #4da6ff,
+      0 0 12px #4da6ff;
+  }
+}
