@@ -44,9 +44,14 @@ div.clock-wrapper {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+  font-family: "Courier New", "Monaco", "Lucida Console", "Liberation Mono",
+    "DejaVu Sans Mono", monospace;
+  font-weight: bold;
+  font-size: 32px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
-/* Show marquee when active */
 .marquee-content.show {
   opacity: 1;
   visibility: visible;
@@ -59,14 +64,14 @@ div.clock-wrapper {
 }
 
 .city-date-combo h2 {
-  font-size: 24px;
+  font-size: 36px;
   margin: 0 20px 0 0;
   color: greenyellow;
   text-shadow: 0 0 10px rgba(173, 255, 47, 0.5);
 }
 
 .city-date-combo .date {
-  font-size: 18px;
+  font-size: 28px;
   margin: 0;
   padding: 0;
   color: #ccc;
@@ -74,7 +79,7 @@ div.clock-wrapper {
 
 @keyframes scroll {
   0% {
-    transform: translateX(100%);
+    transform: translateX(50%);
   }
   100% {
     transform: translateX(-100%);
@@ -155,7 +160,6 @@ footer {
   line-height: 1.4;
 }
 
-/* Mobile responsive footer */
 @media (max-width: 768px) {
   footer {
     font-size: 12px;
@@ -170,7 +174,6 @@ footer {
   }
 }
 
-/* For very small screens */
 @media (max-width: 480px) {
   footer {
     font-size: 11px;
