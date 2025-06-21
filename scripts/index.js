@@ -1,13 +1,48 @@
+let scrollingCities = moment.tz.names().filter((name) => {
+  return (
+    name.includes("/") &&
+    !name.startsWith("Etc/") &&
+    !name.includes("GMT") &&
+    !name.includes("UTC") &&
+    name.split("/").length === 2
+  );
+});
+
+function createGlobalTicker() {
+  let tickerElement = document.querySelector("#global-ticker");
+  scrollingCities.forEach((timezone) => {
+    let cityPart = timezone.split("/")[1];
+    let cityName = cityPart.replace(/_/g, " ");
+    let currentTime = getCurrentTime(timezone);
+    let cityDiv = document.createElement("div");
+    cityDiv.className = "ticker-city";
+    cityDiv.innerHTML = `${cityName}: ${currentTime}`;
+    tickerElement.appendChild(cityDiv);
+  });
+}
+
+console.log(scrollingCities);
 function displayMarquee(event) {
   event.preventDefault();
   let selectElement = document.querySelector("#time-zones");
   let timeZone = selectElement.value;
+  if (timeZone === "current-location") {
+    timeZone = moment.tz.guess();
+  }
   let cityName = selectElement.options[selectElement.selectedIndex].text;
+  if (cityName === "Current city") {
+    // Extract city name from timezone like "America/New_York" -> "New York"
+    let detectedTimezone = moment.tz.guess();
+    let cityPart = detectedTimezone.split("/")[1]; // Gets "New_York"
+    cityName = cityPart.replace(/_/g, " "); // Changes "New_York" to "New York"
+  }
   let marquee = document.querySelector(".marquee-content");
   if (timeZone) {
+    let selectedCity0 = document.querySelector("#selected-city-0");
     let selectedCity1 = document.querySelector("#selected-city-1");
     let selectedCity2 = document.querySelector("#selected-city-2");
     let selectedCity3 = document.querySelector("#selected-city-3");
+    let selectedDate0 = document.querySelector("#selected-date-0");
     let selectedDate1 = document.querySelector("#selected-date-1");
     let selectedDate2 = document.querySelector("#selected-date-2");
     let selectedDate3 = document.querySelector("#selected-date-3");
@@ -15,10 +50,11 @@ function displayMarquee(event) {
     let dateToDisplay = getCurrentDate(timeZone);
 
     let timeToDisplay = getCurrentTime(timeZone);
-
+    selectedCity0.textContent = cityName;
     selectedCity1.textContent = cityName;
     selectedCity2.textContent = cityName;
     selectedCity3.textContent = cityName;
+    selectedDate0.textContent = dateToDisplay;
     selectedDate1.textContent = dateToDisplay;
     selectedDate2.textContent = dateToDisplay;
     selectedDate3.textContent = dateToDisplay;
@@ -53,4 +89,5 @@ function updateTime() {
 }
 
 // Update time every second
+createGlobalTicker();
 setInterval(updateTime, 1000);

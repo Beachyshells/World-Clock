@@ -21,9 +21,11 @@
         <div class="time-zone-container">
           <select name="time-zones" id="time-zones">
             <option value="">Select a city</option>
+            <option value="current-location">Current city</option>
             <option value="Europe/Amsterdam">Amsterdam</option>
             <option value="Europe/Naples">Naples</option>
             <option value="Asia/Dubai">Dubai</option>
+            <option value="America/New_York">New York</option>
           </select>
         </div>
         <div class="clock-container">
@@ -32,6 +34,10 @@
             <div class="marquee-container">
               <div class="marquee-content">
                 <!-- This will be populated dynamically with JavaScript -->
+                <div class="city-date-combo">
+                  <h2 id="selected-city-0">Select a city</h2>
+                  <div class="date" id="selected-date-0">---</div>
+                </div>
                 <div class="city-date-combo">
                   <h2 id="selected-city-1">Select a city</h2>
                   <div class="date" id="selected-date-1">---</div>
@@ -52,6 +58,10 @@
             <!-- Large floating time display -->
             <div class="clock">
               <div class="time" id="selected-time">--:--:--</div>
+            </div>
+            <!-- Global time zone ticker -->
+            <div class="global-ticker-container">
+              <div class="global-ticker-content" id="global-ticker"></div>
             </div>
           </div>
         </div>
