@@ -2,6 +2,7 @@ body {
   background-color: rgb(75, 76, 76);
   font-family: "Courier New", "Monaco", "Lucida Console", "Liberation Mono",
     "DejaVu Sans Mono", monospace;
+  padding-bottom: 70px;
 }
 div.styling-container {
   background-color: whitesmoke;
