@@ -40,7 +40,7 @@ div.clock-wrapper {
   display: flex;
   align-items: center;
   white-space: nowrap;
-  animation: scroll 15s linear infinite;
+  animation: scroll 30s linear infinite;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
@@ -189,6 +189,7 @@ footer {
 a {
   color: black;
   box-shadow: inset 0 0 10px greenyellow;
+
   padding: 4px;
   font-size: 12px;
   text-decoration: none;
@@ -215,6 +216,7 @@ a {
   bottom: 0;
   left: 0;
   width: 100%;
+  margin-top: 20px;
   background: linear-gradient(45deg, #333, #555);
   border: 2px solid greenyellow;
   box-shadow: inset 0 0 20px rgba(173, 255, 47, 0.4),
@@ -226,10 +228,12 @@ a {
 
 .global-ticker-content {
   display: flex;
+  width: max-content;
+  min-width: 10000px;
   align-items: center;
   padding: 10px;
   white-space: nowrap;
-  animation: scroll-global 40s linear infinite;
+  animation: scroll-global 50s linear infinite;
   font-family: "Courier New", "Monaco", "Lucida Console", "Liberation Mono",
     "DejaVu Sans Mono", monospace;
   font-weight: bold;
@@ -242,6 +246,9 @@ a {
 .ticker-city {
   margin-right: 80px; /* Space between cities */
   flex-shrink: 0; /* Prevent shrinking */
+
+  margin-right: 80px;
+  flex-shrink: 0;
 }
 
 @keyframes scroll-global {

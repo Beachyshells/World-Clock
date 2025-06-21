@@ -1,18 +1,54 @@
-let scrollingCities = moment.tz.names().filter((name) => {
-  return (
-    name.includes("/") &&
-    !name.startsWith("Etc/") &&
-    !name.includes("GMT") &&
-    !name.includes("UTC") &&
-    name.split("/").length === 2
-  );
-});
+let majorCities = [
+  "London",
+  "Paris",
+  "Tokyo",
+  "Sydney",
+  "Los_Angeles",
+  "Chicago",
+  "Berlin",
+  "Rome",
+  "Madrid",
+  "Singapore",
+  "Hong_Kong",
+  "Mumbai",
+  "Delhi",
+  "Shanghai",
+  "Beijing",
+  "Seoul",
+  "Moscow",
+  "Cairo",
+  "Lagos",
+  "Johannesburg",
+  "Mexico_City",
+  "Buenos_Aires",
+  "Lima",
+  "Toronto",
+  "Vancouver",
+  "Montreal",
+];
+
+// Create timezone strings from our major cities array
+let scrollingCities = majorCities
+  .map((city) => {
+    // Find the matching timezone from moment.tz.names() for each city
+    let matchingTimezone = moment.tz.names().find((timezone) => {
+      if (timezone.includes("/")) {
+        let cityPart = timezone.split("/")[1];
+        return cityPart === city;
+      }
+      return false;
+    });
+    return matchingTimezone;
+  })
+  .filter((timezone) => timezone !== undefined); // Remove any cities that don't have a matching timezone
 
 function createGlobalTicker() {
   let tickerElement = document.querySelector("#global-ticker");
-  scrollingCities.forEach((timezone) => {
+
+  scrollingCities.forEach((timezone, index) => {
     let cityPart = timezone.split("/")[1];
     let cityName = cityPart.replace(/_/g, " ");
+    console.log(`Created city ${index + 1}: ${cityName}`);
     let currentTime = getCurrentTime(timezone);
     let cityDiv = document.createElement("div");
     cityDiv.className = "ticker-city";
@@ -21,7 +57,6 @@ function createGlobalTicker() {
   });
 }
 
-console.log(scrollingCities);
 function displayMarquee(event) {
   event.preventDefault();
   let selectElement = document.querySelector("#time-zones");
@@ -30,7 +65,7 @@ function displayMarquee(event) {
     timeZone = moment.tz.guess();
   }
   let cityName = selectElement.options[selectElement.selectedIndex].text;
-  if (cityName === "Current city") {
+  if (cityName === "My Location") {
     // Extract city name from timezone like "America/New_York" -> "New York"
     let detectedTimezone = moment.tz.guess();
     let cityPart = detectedTimezone.split("/")[1]; // Gets "New_York"
@@ -80,6 +115,12 @@ timeZone.addEventListener("change", displayMarquee);
 function updateTime() {
   let selectElement = document.querySelector("#time-zones");
   let timeZone = selectElement.value;
+
+  // Handle "My Location" case
+  if (timeZone === "current-location") {
+    timeZone = moment.tz.guess();
+  }
+
   let selectedTime = document.querySelector("#selected-time");
 
   if (timeZone) {
