@@ -286,6 +286,9 @@ footer {
   .global-ticker-content {
     font-size: 18px;
   }
+  footer {
+    font-size: 8px;
+  }
 }
 
 a {
