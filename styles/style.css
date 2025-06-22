@@ -358,7 +358,7 @@ a:hover {
   align-items: center;
   padding: 6px 10px;
   white-space: nowrap;
-  animation: scroll-global 40s linear infinite;
+  animation: scroll-global 55s linear infinite;
   font-family: "Courier New", "Monaco", "Lucida Console", "Liberation Mono",
     "DejaVu Sans Mono", monospace;
   font-weight: bold;
@@ -370,6 +370,7 @@ a:hover {
 .ticker-city {
   margin-right: 40px; /* Space between cities */
   flex-shrink: 0; /* Prevent shrinking */
+  padding: 0 20px;
 }
 
 @keyframes scroll-global {

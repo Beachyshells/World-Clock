@@ -27,10 +27,8 @@ let majorCities = [
   "Montreal",
 ];
 
-// Create timezone strings from our major cities array
 let scrollingCities = majorCities
   .map((city) => {
-    // Find the matching timezone from moment.tz.names() for each city
     let matchingTimezone = moment.tz.names().find((timezone) => {
       if (timezone.includes("/")) {
         let cityPart = timezone.split("/")[1];
@@ -47,15 +45,15 @@ function createGlobalTicker() {
 
   // Create the cities twice for seamless looping
   let citiesToShow = [...scrollingCities, ...scrollingCities];
-
   citiesToShow.forEach((timezone, index) => {
     let cityPart = timezone.split("/")[1];
     let cityName = cityPart.replace(/_/g, " ");
     console.log(`Created city ${index + 1}: ${cityName}`);
     let currentTime = getCurrentTime(timezone);
+    let currentDate = getCurrentDate(timezone);
     let cityDiv = document.createElement("div");
     cityDiv.className = "ticker-city";
-    cityDiv.innerHTML = `${cityName}: ${currentTime}`;
+    cityDiv.innerHTML = `${cityName}: ${currentTime} - ${currentDate}`;
     tickerElement.appendChild(cityDiv);
   });
 }
