@@ -7,7 +7,6 @@ body {
 div.styling-container {
   background-color: whitesmoke;
   max-width: 600px;
-  max-height: fit-content;
   margin: 30px auto;
   padding: 20px;
   padding-bottom: 30px;
@@ -127,8 +126,9 @@ h1 {
   border-radius: 5px;
   padding: 10px;
   letter-spacing: 2px;
-  font-size: 38px;
+  font-size: 48px;
   margin-bottom: 0;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 h2 {
   font-size: 36px;
@@ -354,14 +354,13 @@ a:hover {
 .global-ticker-content {
   display: flex;
   width: max-content;
-  min-width: 10000px;
+  min-width: 400px;
   align-items: center;
   padding: 6px 10px;
   white-space: nowrap;
-  animation: scroll-global 50s linear infinite;
+  animation: scroll-global 40s linear infinite;
   font-family: "Courier New", "Monaco", "Lucida Console", "Liberation Mono",
     "DejaVu Sans Mono", monospace;
-  font-weight: bold;
   font-weight: bold;
   font-size: 22px;
   letter-spacing: 1px;
@@ -369,18 +368,15 @@ a:hover {
 }
 
 .ticker-city {
-  margin-right: 80px; /* Space between cities */
+  margin-right: 40px; /* Space between cities */
   flex-shrink: 0; /* Prevent shrinking */
-
-  margin-right: 80px;
-  flex-shrink: 0;
 }
 
 @keyframes scroll-global {
   0% {
-    transform: translateX(100%);
+    transform: translateX(0%);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
 }

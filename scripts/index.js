@@ -45,7 +45,10 @@ let scrollingCities = majorCities
 function createGlobalTicker() {
   let tickerElement = document.querySelector("#global-ticker");
 
-  scrollingCities.forEach((timezone, index) => {
+  // Create the cities twice for seamless looping
+  let citiesToShow = [...scrollingCities, ...scrollingCities];
+
+  citiesToShow.forEach((timezone, index) => {
     let cityPart = timezone.split("/")[1];
     let cityName = cityPart.replace(/_/g, " ");
     console.log(`Created city ${index + 1}: ${cityName}`);
@@ -66,10 +69,7 @@ function displayMarquee(event) {
   }
   let cityName = selectElement.options[selectElement.selectedIndex].text;
   if (cityName === "My Location") {
-    // Extract city name from timezone like "America/New_York" -> "New York"
-    let detectedTimezone = moment.tz.guess();
-    let cityPart = detectedTimezone.split("/")[1]; // Gets "New_York"
-    cityName = cityPart.replace(/_/g, " "); // Changes "New_York" to "New York"
+    cityName = "My Location";
   }
   let marquee = document.querySelector(".marquee-content");
   if (timeZone) {
